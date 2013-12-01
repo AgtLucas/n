@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', routes.index);
-app.get('/users', routes.user.index);
+app.get('/home', routes.home.index);
 
 load('models')
   .then('controllers')
