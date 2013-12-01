@@ -4,6 +4,7 @@
  */
 
 var express = require('express'),
+    load = require('express-load'),
     routes = require('./routes');
 
 var app = express();
@@ -15,6 +16,11 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', routes.index);
 app.get('/users', routes.user.index);
+
+load('models')
+  .then('controllers')
+  .then('routes')
+  .into(app);
 
 app.listen(3000, function() {
   console.log('Nothing here!');
